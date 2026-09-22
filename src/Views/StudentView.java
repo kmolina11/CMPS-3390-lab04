@@ -3,10 +3,7 @@ package Views;
 import Models.Student;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 
 public class StudentView  extends JFrame {
     private JPanel panel;
@@ -19,6 +16,9 @@ public class StudentView  extends JFrame {
     private JLabel labelStudentID;
     private JButton buttonAddStudent;
     private JButton buttonRemoveStudent;
+    private JLabel labelGpa;
+    private JTextField inputGpa;
+    private JButton buttonGetGPA;
     DefaultListModel<Student> listModelStudents; // generic typing tell it what type of list
 
     public StudentView(){
@@ -34,16 +34,23 @@ public class StudentView  extends JFrame {
     public String getFirstName(){
         return inputFirstName.getText();
     }
+
     public String getLastName(){
         return inputLastName.getText();
     }
+
     public String getStudentID(){   //is string because its the controllers job to validate
         return inputStudentID.getText();
     }
+    public String getGpa() {
+        return inputGpa.getText();
+    }
+
     public void resetInputs(){
         inputFirstName.setText("");
         inputLastName.setText("");
         inputStudentID.setText("");
+        inputGpa.setText("");
 
         inputFirstName.grabFocus();
     }
@@ -71,4 +78,7 @@ public class StudentView  extends JFrame {
     public void setRemoveStudentListener(ActionListener listener){
         buttonRemoveStudent.addActionListener(listener);
     }
+
+    public void showMessage(String message){JOptionPane.showMessageDialog(null, message);}
+    public void setGetGpaListener(ActionListener listner){buttonGetGPA.addActionListener(listner);}
 }
